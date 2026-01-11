@@ -168,7 +168,7 @@ export default function Home() {
               ×
             </button>
             <h2 className="modal-title">Join the Waitlist</h2>
-            <p className="modal-subtitle">Be among the first to sign up! We will send an email (with a discoutn code) letting you know when the site is live.</p>
+            <p className="modal-subtitle">Be among the first to sign up! We will send an email with a discount code when the site is live.</p>
             <form onSubmit={handleSubmit} className="waitlist-form">
               <div className="form-group">
                 <label htmlFor="email">Email Address</label>
