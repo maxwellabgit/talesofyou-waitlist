@@ -168,7 +168,7 @@ export default function Home() {
               ×
             </button>
             <h2 className="modal-title">Join the Waitlist</h2>
-            <p className="modal-subtitle">Be among the first to create magical stories for your children</p>
+            <p className="modal-subtitle">Be among the first to sign up! We will send an email (with a discoutn code) letting you know when the site is live.</p>
             <form onSubmit={handleSubmit} className="waitlist-form">
               <div className="form-group">
                 <label htmlFor="email">Email Address</label>
@@ -252,7 +252,7 @@ export default function Home() {
           </div>
 
           <div className="hero-visual">
-            <div className="hero-chip">Human-written • AI-illustrated • Shareable</div>
+            <div className="hero-chip">Human-written • AI-illustrated • Personalized • Shareable</div>
             <div className="hero-panel">
               <div className="panel-header">
                 <span className="panel-dot"></span>
@@ -276,7 +276,7 @@ export default function Home() {
         <div className="section-header">
           <div className="eyebrow">A peek before the drop</div>
           <h2 className="section-title">How It Works</h2>
-          <p className="section-subtitle">Create personalized stories for your children in just a few steps—see the experience in motion.</p>
+          <p className="section-subtitle">Create personalized stories in just a few steps—see the experience in motion.</p>
         </div>
         <div className="how-layout">
           <div className="vertical-video">
@@ -359,7 +359,7 @@ export default function Home() {
         <div className="blog-header">
           <h2 className="section-title">Blog</h2>
         </div>
-        <p className="blog-subtitle">Keep up with the latest from the Tales Of You team.</p>
+        <p className="blog-subtitle">Keep up with the latest from the Tales of You team.</p>
         <div className="blog-grid">
           {blogPosts.map((post, index) => (
             <Link key={index} href={`/blog/${post.slug}`} className="blog-card-link">
@@ -385,7 +385,7 @@ export default function Home() {
       <section className="final-cta">
         <div className="cta-content">
           <h2>Ready to create magical memories?</h2>
-          <p>Be the first to know when Tales of You launches.</p>
+          <p>Be the first to know when Tales of You launches, and get a discount for signing up early.</p>
           <button className="btn-primary btn-large" onClick={() => setIsModalOpen(true)}>
             Join the Waitlist
             <span className="arrow">→</span>

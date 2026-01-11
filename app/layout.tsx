@@ -15,7 +15,7 @@ const rumRaisin = Rum_Raisin({
 })
 
 export const metadata: Metadata = {
-  title: 'Tales of You — Create Magical Stories for Your Children',
+  title: 'Tales of You — Create Magical Stories With Your Children',
   description: 'Transform your ideas into beautifully illustrated, animated storybooks. Build characters, design pages, and bring stories to life with AI.',
 }
 
