@@ -515,7 +515,8 @@ body {
 
 .step-card {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 36px 48px 1fr;
+  align-items: center;
   gap: 16px;
   position: relative;
   padding: 22px 24px;
@@ -635,6 +636,12 @@ body {
   gap: 32px;
   max-width: 1200px;
   width: 100%;
+}
+
+.blog-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
 }
 
 .blog-card {
@@ -1244,7 +1251,7 @@ body {
   }
 
   .step-card {
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 36px 48px 1fr;
     padding: 18px 20px;
   }
 
@@ -1341,7 +1348,7 @@ body {
   }
 
   .step-card {
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 32px 42px 1fr;
     padding: 16px 16px 16px 18px;
   }
 }
@@ -1377,7 +1384,7 @@ body {
 }
 
 .back-link {
-  color: var(--cream);
+  color: var(--ink);
   text-decoration: none;
   font-size: 14px;
   opacity: 0.8;
@@ -1417,14 +1424,14 @@ body {
   font-family: var(--font-display);
   font-size: 48px;
   font-weight: 700;
-  color: var(--cream);
+  color: var(--ink);
   margin-bottom: 16px;
   line-height: 1.2;
 }
 
 .blog-post-excerpt {
   font-size: 18px;
-  color: rgba(255, 247, 237, 0.7);
+  color: var(--mist);
   line-height: 1.6;
   max-width: 600px;
   margin: 0 auto;

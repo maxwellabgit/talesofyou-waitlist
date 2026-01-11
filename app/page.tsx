@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react"
 import Image from "next/image"
+import Link from "next/link"
 import logo from "../assets/logo.png"
 
 const howItWorks = [
@@ -251,7 +252,7 @@ export default function Home() {
           </div>
 
           <div className="hero-visual">
-            <div className="hero-chip">AI-illustrated • Animated • Shareable</div>
+            <div className="hero-chip">Human-written • AI-illustrated • Shareable</div>
             <div className="hero-panel">
               <div className="panel-header">
                 <span className="panel-dot"></span>
@@ -358,23 +359,25 @@ export default function Home() {
         <div className="blog-header">
           <h2 className="section-title">Blog</h2>
         </div>
-        <p className="blog-subtitle">Keep up with the latest from the Tales Of You team</p>
+        <p className="blog-subtitle">Keep up with the latest from the Tales Of You team.</p>
         <div className="blog-grid">
           {blogPosts.map((post, index) => (
-            <article key={index} className="blog-card" style={{ animationDelay: `${index * 0.1}s` }}>
-              <div className="blog-card-header">
-                <span className="blog-category">{post.category}</span>
-                <span className="blog-read-time">{post.readTime}</span>
-              </div>
-              <h3 className="blog-title">{post.title}</h3>
-              <p className="blog-excerpt">{post.excerpt}</p>
-              <div className="blog-footer">
-                <span className="blog-date">{post.date}</span>
-                <a href={`/blog/${post.slug}`} className="blog-read-more">
-                  Read more →
-                </a>
-              </div>
-            </article>
+            <Link key={index} href={`/blog/${post.slug}`} className="blog-card-link">
+              <article className="blog-card" style={{ animationDelay: `${index * 0.1}s` }}>
+                <div className="blog-card-header">
+                  <span className="blog-category">{post.category}</span>
+                  <span className="blog-read-time">{post.readTime}</span>
+                </div>
+                <h3 className="blog-title">{post.title}</h3>
+                <p className="blog-excerpt">{post.excerpt}</p>
+                <div className="blog-footer">
+                  <span className="blog-date">{post.date}</span>
+                  <span className="blog-read-more">
+                    Read more →
+                  </span>
+                </div>
+              </article>
+            </Link>
           ))}
         </div>
       </section>
@@ -399,7 +402,7 @@ export default function Home() {
             <span className="text-sky">You</span>
           </span>
         </div>
-        <p className="footer-copy">© 2024 Tales of You. All rights reserved.</p>
+        <p className="footer-copy">© 2025 Tales of You. All rights reserved.</p>
       </footer>
     </main>
   )
