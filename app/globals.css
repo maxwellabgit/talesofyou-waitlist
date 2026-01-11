@@ -183,7 +183,7 @@ body {
 
 .logo-text {
   font-family: var(--font-quicksand), 'Quicksand', 'Nunito', sans-serif;
-  font-size: 46px;
+  font-size: 80px;
   font-weight: 700;
   letter-spacing: -0.015em;
   display: flex;
@@ -725,6 +725,192 @@ body {
 }
 
 /* ============================================
+   ROADMAP SECTION
+   ============================================ */
+
+.roadmap-section {
+  width: 100%;
+  padding: 100px 48px;
+  background: var(--gradient-hero);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.roadmap-layout {
+  display: flex;
+  gap: 64px;
+  max-width: 1100px;
+  width: 100%;
+  align-items: flex-start;
+  margin-top: 48px;
+}
+
+.roadmap-stack {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+  padding-left: 12px;
+}
+
+.roadmap-stack::before {
+  content: '';
+  position: absolute;
+  left: 32px;
+  top: 40px;
+  bottom: 40px;
+  width: 3px;
+  background: linear-gradient(180deg, var(--coral) 0%, var(--gold) 50%, var(--sky) 100%);
+  border-radius: 2px;
+  opacity: 0.3;
+}
+
+.roadmap-card {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 24px 24px 24px 0;
+  position: relative;
+  animation: fadeInUp 0.6s ease-out both;
+}
+
+.roadmap-card.in-progress .roadmap-number {
+  background: var(--gradient-coral);
+  box-shadow: 0 4px 20px rgba(255, 107, 107, 0.4);
+}
+
+.roadmap-card.upcoming .roadmap-number {
+  background: var(--cloud);
+  color: var(--mist);
+}
+
+.roadmap-number {
+  width: 40px;
+  height: 40px;
+  background: var(--gradient-sky);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--white);
+  z-index: 2;
+  position: relative;
+}
+
+.roadmap-icon {
+  font-size: 28px;
+  line-height: 1;
+  margin-top: 4px;
+}
+
+.roadmap-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.roadmap-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.roadmap-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.roadmap-badge {
+  background: var(--gradient-coral);
+  color: var(--white);
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.roadmap-description {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--mist);
+  max-width: 400px;
+}
+
+.roadmap-connector {
+  display: none;
+}
+
+.roadmap-video {
+  flex-shrink: 0;
+  cursor: pointer;
+  position: relative;
+}
+
+.roadmap-video .video-portrait {
+  width: 280px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  position: relative;
+  background: var(--ink);
+  aspect-ratio: 9/16;
+}
+
+.roadmap-video .video-inline {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-sound-indicator {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: var(--white);
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 600;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.video-sound-indicator.muted {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.video-sound-indicator.unmuted {
+  background: var(--gradient-coral);
+}
+
+.roadmap-video:hover .video-sound-indicator {
+  transform: translateX(-50%) scale(1.05);
+}
+
+/* ============================================
    FINAL CTA SECTION
    ============================================ */
 
@@ -1024,7 +1210,7 @@ body {
   }
 
   .logo-text {
-    font-size: 36px;
+    font-size: 56px;
   }
 
   .hero-headline {
@@ -1068,8 +1254,29 @@ body {
 
   .how-it-works,
   .blog-section,
-  .final-cta {
+  .final-cta,
+  .roadmap-section {
     padding: 60px 24px;
+  }
+
+  .roadmap-layout {
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .roadmap-video {
+    order: -1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .roadmap-video .video-portrait {
+    width: 240px;
+  }
+
+  .roadmap-stack::before {
+    left: 24px;
   }
 
   .blog-grid {
@@ -1109,7 +1316,7 @@ body {
   }
 
   .logo-text {
-    font-size: 28px;
+    font-size: 42px;
   }
 
   .hero-headline {
@@ -1136,5 +1343,230 @@ body {
   .step-card {
     grid-template-columns: auto 1fr;
     padding: 16px 16px 16px 18px;
+  }
+}
+
+/* Blog Post Page Styles */
+.blog-page {
+  min-height: 100vh;
+}
+
+.blog-header-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.blog-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.logo-text-small {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 700;
+  display: flex;
+  gap: 6px;
+}
+
+.back-link {
+  color: var(--cream);
+  text-decoration: none;
+  font-size: 14px;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.back-link:hover {
+  opacity: 1;
+}
+
+.blog-post {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 48px 24px 96px;
+}
+
+.blog-post-header {
+  margin-bottom: 48px;
+  text-align: center;
+}
+
+.blog-post-meta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  font-size: 14px;
+}
+
+.blog-divider {
+  color: var(--gold);
+  opacity: 0.5;
+}
+
+.blog-post-title {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--cream);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.blog-post-excerpt {
+  font-size: 18px;
+  color: rgba(255, 247, 237, 0.7);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.blog-post-content {
+  color: #2d2d3a;
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.blog-post-content h1 {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 48px 0 24px;
+}
+
+.blog-post-content h2 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--coral);
+  margin: 48px 0 20px;
+}
+
+.blog-post-content h3 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--gold);
+  margin: 32px 0 16px;
+}
+
+.blog-post-content p {
+  margin-bottom: 24px;
+  color: #3d3d4a;
+}
+
+.blog-post-content strong {
+  color: #1a1a2e;
+  font-weight: 600;
+}
+
+.blog-post-content em {
+  font-style: italic;
+  color: #4a4a5a;
+}
+
+.blog-post-content blockquote {
+  border-left: 4px solid var(--gold);
+  padding-left: 24px;
+  margin: 32px 0;
+  font-style: italic;
+  color: #4a4a5a;
+  font-size: 18px;
+}
+
+.blog-post-content blockquote em {
+  color: #3d3d4a;
+}
+
+.blog-post-content ul,
+.blog-post-content ol {
+  margin: 24px 0;
+  padding-left: 24px;
+}
+
+.blog-post-content li {
+  margin-bottom: 12px;
+  color: #3d3d4a;
+}
+
+.blog-post-content hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 48px 0;
+}
+
+.blog-post-content a {
+  color: var(--sky);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.blog-post-content a:hover {
+  color: var(--coral);
+}
+
+@media (max-width: 768px) {
+  .blog-header-nav {
+    padding: 20px 24px;
+  }
+
+  .logo-text-small {
+    font-size: 20px;
+  }
+
+  .blog-post {
+    padding: 32px 20px 64px;
+  }
+
+  .blog-post-title {
+    font-size: 32px;
+  }
+
+  .blog-post-excerpt {
+    font-size: 16px;
+  }
+
+  .blog-post-content {
+    font-size: 16px;
+  }
+
+  .blog-post-content h1 {
+    font-size: 28px;
+  }
+
+  .blog-post-content h2 {
+    font-size: 24px;
+  }
+
+  .blog-post-content h3 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .blog-header-nav {
+    padding: 16px;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .blog-post-meta {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .blog-post-title {
+    font-size: 28px;
   }
 }

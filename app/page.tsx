@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import Image from "next/image"
 import logo from "../assets/logo.png"
 
@@ -8,20 +8,20 @@ const howItWorks = [
   {
     number: "1",
     icon: "📖",
-    title: "Choose a Template",
-    description: "Browse our collection of magical story templates designed for children of all ages.",
+    title: "Choose a Story",
+    description: "Browse our collection of magical stories designed for children of all ages.",
   },
   {
     number: "2",
     icon: "✨",
     title: "Personalize Your Story",
-    description: "Add your child's name, choose characters, and customize the adventure.",
+    description: "Add your name, choose characters, and customize the adventure.",
   },
   {
     number: "3",
     icon: "❤️",
     title: "Watch the Magic",
-    description: "Our AI creates beautiful illustrations and brings your story to life.",
+    description: "Our custom AI model creates beautiful characters, illustrations, and brings your story to life.",
   },
   {
     number: "4",
@@ -31,26 +31,44 @@ const howItWorks = [
   },
 ]
 
+const roadmapItems = [
+  {
+    number: "1",
+    icon: "🚀",
+    title: "Launch Beta",
+    description: "Release our first collection of human-written, personalized stories to early supporters.",
+    status: "in-progress",
+  },
+  {
+    number: "2",
+    icon: "🎧",
+    title: "Audio Narration",
+    description: "Add AI-powered voice narration so stories can be read aloud automatically.",
+    status: "upcoming",
+  },
+  {
+    number: "3",
+    icon: "🎬",
+    title: "Animated Illustrations",
+    description: "Add animated illustrations to your stories with the click of a button.",
+    status: "upcoming",
+  },
+  {
+    number: "4",
+    icon: "📚",
+    title: "Choose Your Own Adventure",
+    description: "Grow our library with additional stories with alternate endings.",
+    status: "upcoming",
+  },
+]
+
 const blogPosts = [
   {
-    title: "The Magic of Personalized Storytelling",
-    excerpt: "Discover how personalized stories can spark your child's imagination and create lasting memories.",
-    date: "March 15, 2024",
-    category: "Storytelling",
-    readTime: "5 min read",
-  },
-  {
-    title: "How AI is Transforming Children's Books",
-    excerpt: "Explore the innovative ways artificial intelligence is revolutionizing the way we create and share stories with children.",
-    date: "March 10, 2024",
-    category: "Technology",
-    readTime: "7 min read",
-  },
-  {
-    title: "Tips for Creating Engaging Children's Stories",
-    excerpt: "Learn practical tips and techniques for crafting stories that captivate young minds and encourage a love of reading.",
-    date: "March 5, 2024",
-    category: "Writing",
+    slug: "our-story",
+    title: "Our Story",
+    excerpt: "Discover the mission behind Tales of You and how we're bringing imagination back to reading.",
+    date: "January 11, 2026",
+    category: "Company",
     readTime: "6 min read",
   },
 ]
@@ -61,6 +79,31 @@ export default function Home() {
   const [phone, setPhone] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<{ type: 'success' | 'error', message: string } | null>(null)
+  const [isRoadmapVideoMuted, setIsRoadmapVideoMuted] = useState(true)
+  const [waitlistCount, setWaitlistCount] = useState<number | null>(null)
+  const roadmapVideoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    const fetchWaitlistCount = async () => {
+      try {
+        const response = await fetch('/api/waitlist')
+        const data = await response.json()
+        if (data.count !== undefined) {
+          setWaitlistCount(data.count)
+        }
+      } catch (error) {
+        console.error('Failed to fetch waitlist count:', error)
+      }
+    }
+    fetchWaitlistCount()
+  }, [])
+
+  const toggleRoadmapVideoMute = () => {
+    if (roadmapVideoRef.current) {
+      roadmapVideoRef.current.muted = !roadmapVideoRef.current.muted
+      setIsRoadmapVideoMuted(roadmapVideoRef.current.muted)
+    }
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -82,6 +125,12 @@ export default function Home() {
         setSubmitStatus({ type: 'success', message: 'Thanks for joining the waitlist! We will let you know when the site is live.' })
         setEmail("")
         setPhone("")
+        // Refresh the waitlist count
+        const countResponse = await fetch('/api/waitlist')
+        const countData = await countResponse.json()
+        if (countData.count !== undefined) {
+          setWaitlistCount(countData.count)
+        }
         setTimeout(() => {
           setIsModalOpen(false)
           setSubmitStatus(null)
@@ -167,7 +216,7 @@ export default function Home() {
           <div className="hero-content">
             <div className="coming-soon-badge">
               <span className="badge-dot"></span>
-              Coming Soon · Private Drop
+              Coming Soon!
             </div>
             
             <div className="logo-horizontal">
@@ -197,7 +246,7 @@ export default function Home() {
                 <div className="avatar">👧</div>
                 <div className="avatar">👦</div>
               </div>
-              <span>Join 1,200+ parents on the waitlist</span>
+              <span>Join {waitlistCount !== null ? (waitlistCount + 50).toLocaleString() : '...'} heroes on the waitlist</span>
             </div>
           </div>
 
@@ -214,8 +263,8 @@ export default function Home() {
                 <li>Save your favorite stories and characters, and share with your family</li>
               </ul>
               <div className="panel-footer">
-                <span className="pill">Waitlist members get a discoutn on their first month</span>
-                <span className="pill pill-soft">Notify me →</span>
+                <span className="pill" onClick={() => setIsModalOpen(true)} style={{ cursor: 'pointer' }}>Get a discount on your first month</span>
+                <span className="pill pill-soft" onClick={() => setIsModalOpen(true)} style={{ cursor: 'pointer' }}>Notify me →</span>
               </div>
             </div>
           </div>
@@ -243,7 +292,6 @@ export default function Home() {
                 Your browser does not support the video tag.
               </video>
             </div>
-            <p className="video-caption">Always-on loop • 9:16 vertical preview</p>
           </div>
           <div className="steps-stack">
             {howItWorks.map((step, index) => (
@@ -261,12 +309,56 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="roadmap-section" id="roadmap">
+        <div className="section-header">
+          <div className="eyebrow">What's coming</div>
+          <h2 className="section-title">Roadmap</h2>
+          <p className="section-subtitle">Our journey to bring magical storytelling to families everywhere.</p>
+        </div>
+        <div className="roadmap-layout">
+          <div className="roadmap-stack">
+            {roadmapItems.map((item, index) => (
+              <div key={item.number} className={`roadmap-card ${item.status}`} style={{ animationDelay: `${index * 0.1}s` }}>
+                <div className="roadmap-number">{item.number}</div>
+                <div className="roadmap-icon">{item.icon}</div>
+                <div className="roadmap-body">
+                  <div className="roadmap-title-row">
+                    <h3 className="roadmap-title">{item.title}</h3>
+                    {item.status === "in-progress" && <span className="roadmap-badge">In Progress</span>}
+                  </div>
+                  <p className="roadmap-description">{item.description}</p>
+                </div>
+                {index < roadmapItems.length - 1 && <div className="roadmap-connector"></div>}
+              </div>
+            ))}
+          </div>
+          <div className="roadmap-video" onClick={toggleRoadmapVideoMute}>
+            <div className="video-portrait">
+              <video
+                ref={roadmapVideoRef}
+                className="video-inline"
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="auto"
+              >
+                <source src="/TOY-Ad-2.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <div className={`video-sound-indicator ${isRoadmapVideoMuted ? 'muted' : 'unmuted'}`}>
+                {isRoadmapVideoMuted ? '🔇 Click for sound' : '🔊 Sound on'}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="blog-section">
         <div className="blog-header">
-          <span className="blog-icon">✍️</span>
-          <h2 className="section-title">Latest Blog Posts</h2>
+          <h2 className="section-title">Blog</h2>
         </div>
-        <p className="blog-subtitle">Insights, tips, and stories about creating magical experiences for children</p>
+        <p className="blog-subtitle">Keep up with the latest from the Tales Of You team</p>
         <div className="blog-grid">
           {blogPosts.map((post, index) => (
             <article key={index} className="blog-card" style={{ animationDelay: `${index * 0.1}s` }}>
@@ -278,7 +370,7 @@ export default function Home() {
               <p className="blog-excerpt">{post.excerpt}</p>
               <div className="blog-footer">
                 <span className="blog-date">{post.date}</span>
-                <a href="#" className="blog-read-more">
+                <a href={`/blog/${post.slug}`} className="blog-read-more">
                   Read more →
                 </a>
               </div>
@@ -300,7 +392,7 @@ export default function Home() {
 
       <footer className="footer">
         <div className="footer-logo">
-          <Image src={logo} alt="Tales of You" width={32} height={32} />
+          <Image src={logo} alt="Tales of You" width={42} height={42} />
           <span className="footer-brand">
             <span className="text-coral">Tales</span>
             <span className="text-gold">of</span>
