@@ -34,8 +34,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   return (
     <main className="page blog-page">
-      {/* Decorative elements */}
-      <div className="bg-decoration">
+      {/* Decorative elements - hidden from screen readers */}
+      <div className="bg-decoration" aria-hidden="true">
         <div className="star star-1">✦</div>
         <div className="star star-2">✧</div>
         <div className="star star-3">✦</div>
@@ -59,9 +59,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         <div className="blog-post-header">
           <div className="blog-post-meta">
             <span className="blog-category">{post.category}</span>
-            <span className="blog-divider">•</span>
+            <span className="blog-divider" aria-hidden="true">•</span>
             <span className="blog-read-time">{post.readTime}</span>
-            <span className="blog-divider">•</span>
+            <span className="blog-divider" aria-hidden="true">•</span>
             <span className="blog-date">{post.date}</span>
           </div>
           <h1 className="blog-post-title">{post.title}</h1>
@@ -82,7 +82,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <span className="text-sky">You</span>
           </span>
         </div>
-        <p className="footer-copy">© 2024 Tales of You. All rights reserved.</p>
+        <nav className="footer-links" aria-label="Legal">
+          <Link href="/privacy">Privacy Policy</Link>
+          <Link href="/terms">Terms of Service</Link>
+        </nav>
+        <p className="footer-copy">© 2026 Tales of You. All rights reserved.</p>
       </footer>
     </main>
   )

@@ -329,12 +329,26 @@ body {
   font-size: 12px;
   letter-spacing: 0.01em;
   box-shadow: 0 10px 24px rgba(245, 169, 169, 0.35);
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(245, 169, 169, 0.45);
 }
 
 .pill-soft {
   background: rgba(168, 216, 232, 0.18);
   color: var(--ink);
   border: 1px solid rgba(168, 216, 232, 0.5);
+  box-shadow: none;
+}
+
+.pill-soft:hover {
+  background: rgba(168, 216, 232, 0.28);
   box-shadow: none;
 }
 
@@ -846,10 +860,10 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  animation: pulse 2s ease-in-out infinite;
+  animation: pulse-opacity 2s ease-in-out infinite;
 }
 
-@keyframes pulse {
+@keyframes pulse-opacity {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.7; }
 }
@@ -869,6 +883,10 @@ body {
   flex-shrink: 0;
   cursor: pointer;
   position: relative;
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
 }
 
 .roadmap-video .video-portrait {
@@ -978,6 +996,22 @@ body {
   gap: 6px;
   font-weight: 700;
   letter-spacing: -0.01em;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-links a {
+  font-size: 14px;
+  color: var(--mist);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: var(--coral-deep);
 }
 
 .footer-copy {

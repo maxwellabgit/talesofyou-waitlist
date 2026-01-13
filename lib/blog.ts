@@ -84,3 +84,4 @@ export function getAllBlogSlugs(): string[] {
     .map((fileName) => fileName.replace(/\.mdx$/, ''))
 }
 
+

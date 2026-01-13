@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef, useEffect, useCallback } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import logo from "../assets/logo.png"
@@ -83,7 +83,10 @@ export default function Home() {
   const [isRoadmapVideoMuted, setIsRoadmapVideoMuted] = useState(true)
   const [waitlistCount, setWaitlistCount] = useState<number | null>(null)
   const roadmapVideoRef = useRef<HTMLVideoElement>(null)
+  const modalRef = useRef<HTMLDivElement>(null)
+  const emailInputRef = useRef<HTMLInputElement>(null)
 
+  // Fetch waitlist count on mount
   useEffect(() => {
     const fetchWaitlistCount = async () => {
       try {
@@ -98,6 +101,34 @@ export default function Home() {
     }
     fetchWaitlistCount()
   }, [])
+
+  // Handle Escape key to close modal
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
+    if (e.key === 'Escape' && isModalOpen && !isSubmitting) {
+      setIsModalOpen(false)
+    }
+  }, [isModalOpen, isSubmitting])
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [handleKeyDown])
+
+  // Focus trap and focus first input when modal opens
+  useEffect(() => {
+    if (isModalOpen && emailInputRef.current) {
+      emailInputRef.current.focus()
+    }
+    // Prevent body scroll when modal is open
+    if (isModalOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [isModalOpen])
 
   const toggleRoadmapVideoMute = () => {
     if (roadmapVideoRef.current) {
@@ -148,8 +179,8 @@ export default function Home() {
 
   return (
     <main className="page">
-      {/* Decorative elements */}
-      <div className="bg-decoration">
+      {/* Decorative elements - hidden from screen readers */}
+      <div className="bg-decoration" aria-hidden="true">
         <div className="star star-1">✦</div>
         <div className="star star-2">✧</div>
         <div className="star star-3">✦</div>
@@ -158,21 +189,34 @@ export default function Home() {
       </div>
 
       {isModalOpen && (
-        <div className="modal-overlay" onClick={() => !isSubmitting && setIsModalOpen(false)}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <div 
+          className="modal-overlay" 
+          onClick={() => !isSubmitting && setIsModalOpen(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="modal-title"
+        >
+          <div 
+            ref={modalRef}
+            className="modal-content" 
+            onClick={(e) => e.stopPropagation()}
+          >
             <button 
               className="modal-close" 
               onClick={() => setIsModalOpen(false)}
               disabled={isSubmitting}
+              aria-label="Close dialog"
+              type="button"
             >
               ×
             </button>
-            <h2 className="modal-title">Join the Waitlist</h2>
+            <h2 id="modal-title" className="modal-title">Join the Waitlist</h2>
             <p className="modal-subtitle">Be among the first to sign up! We will send an email with a discount code when the site is live.</p>
             <form onSubmit={handleSubmit} className="waitlist-form">
               <div className="form-group">
-                <label htmlFor="email">Email Address</label>
+                <label htmlFor="email">Email Address <span aria-hidden="true">*</span></label>
                 <input
+                  ref={emailInputRef}
                   type="email"
                   id="email"
                   value={email}
@@ -180,10 +224,11 @@ export default function Home() {
                   placeholder="your@email.com"
                   required
                   disabled={isSubmitting}
+                  aria-required="true"
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="phone">Phone Number</label>
+                <label htmlFor="phone">Phone Number <span aria-hidden="true">*</span></label>
                 <input
                   type="tel"
                   id="phone"
@@ -192,10 +237,15 @@ export default function Home() {
                   placeholder="(555) 123-4567"
                   required
                   disabled={isSubmitting}
+                  aria-required="true"
                 />
               </div>
               {submitStatus && (
-                <div className={`form-status ${submitStatus.type}`}>
+                <div 
+                  className={`form-status ${submitStatus.type}`}
+                  role={submitStatus.type === 'error' ? 'alert' : 'status'}
+                  aria-live="polite"
+                >
                   {submitStatus.message}
                 </div>
               )}
@@ -205,7 +255,7 @@ export default function Home() {
                 disabled={isSubmitting}
               >
                 {isSubmitting ? 'Joining...' : 'Join the Waitlist'}
-                {!isSubmitting && <span className="arrow">→</span>}
+                {!isSubmitting && <span className="arrow" aria-hidden="true">→</span>}
               </button>
             </form>
           </div>
@@ -237,12 +287,12 @@ export default function Home() {
             <div className="hero-actions">
               <button className="btn-primary" onClick={() => setIsModalOpen(true)}>
                 Join the Waitlist
-                <span className="arrow">→</span>
+                <span className="arrow" aria-hidden="true">→</span>
               </button>
             </div>
 
             <div className="waitlist-count">
-              <div className="avatar-stack">
+              <div className="avatar-stack" aria-hidden="true">
                 <div className="avatar">👶</div>
                 <div className="avatar">👧</div>
                 <div className="avatar">👦</div>
@@ -264,8 +314,8 @@ export default function Home() {
                 <li>Save your favorite stories and characters, and share with your family</li>
               </ul>
               <div className="panel-footer">
-                <span className="pill" onClick={() => setIsModalOpen(true)} style={{ cursor: 'pointer' }}>Get a discount on your first month</span>
-                <span className="pill pill-soft" onClick={() => setIsModalOpen(true)} style={{ cursor: 'pointer' }}>Notify me →</span>
+                <button className="pill" onClick={() => setIsModalOpen(true)} type="button">Get a discount on your first month</button>
+                <button className="pill pill-soft" onClick={() => setIsModalOpen(true)} type="button">Notify me <span aria-hidden="true">→</span></button>
               </div>
             </div>
           </div>
@@ -287,7 +337,8 @@ export default function Home() {
                 loop
                 muted
                 playsInline
-                preload="auto"
+                preload="metadata"
+                aria-label="Demo video showing how Tales of You works"
               >
                 <source src="/TalesOfYou-Demo1.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
@@ -333,7 +384,12 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <div className="roadmap-video" onClick={toggleRoadmapVideoMute}>
+          <button 
+            className="roadmap-video" 
+            onClick={toggleRoadmapVideoMute}
+            type="button"
+            aria-label={isRoadmapVideoMuted ? 'Click to unmute video' : 'Click to mute video'}
+          >
             <div className="video-portrait">
               <video
                 ref={roadmapVideoRef}
@@ -342,16 +398,17 @@ export default function Home() {
                 loop
                 muted
                 playsInline
-                preload="auto"
+                preload="metadata"
+                aria-label="Tales of You promotional video"
               >
                 <source src="/TOY-Ad-2.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
-              <div className={`video-sound-indicator ${isRoadmapVideoMuted ? 'muted' : 'unmuted'}`}>
+              <div className={`video-sound-indicator ${isRoadmapVideoMuted ? 'muted' : 'unmuted'}`} aria-hidden="true">
                 {isRoadmapVideoMuted ? '🔇 Click for sound' : '🔊 Sound on'}
               </div>
             </div>
-          </div>
+          </button>
         </div>
       </section>
 
@@ -388,7 +445,7 @@ export default function Home() {
           <p>Be the first to know when Tales of You launches, and get a discount for signing up early.</p>
           <button className="btn-primary btn-large" onClick={() => setIsModalOpen(true)}>
             Join the Waitlist
-            <span className="arrow">→</span>
+            <span className="arrow" aria-hidden="true">→</span>
           </button>
         </div>
       </section>
@@ -402,7 +459,11 @@ export default function Home() {
             <span className="text-sky">You</span>
           </span>
         </div>
-        <p className="footer-copy">© 2025 Tales of You. All rights reserved.</p>
+        <nav className="footer-links" aria-label="Legal">
+          <Link href="/privacy">Privacy Policy</Link>
+          <Link href="/terms">Terms of Service</Link>
+        </nav>
+        <p className="footer-copy">© 2026 Tales of You. All rights reserved.</p>
       </footer>
     </main>
   )
