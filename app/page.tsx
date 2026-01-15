@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect, useCallback } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import logo from "../assets/logo.png"
+const logo = "/logo.png"
 
 const howItWorks = [
   {
@@ -315,7 +315,6 @@ export default function Home() {
               </ul>
               <div className="panel-footer">
                 <button className="pill" onClick={() => setIsModalOpen(true)} type="button">Get a discount on your first month</button>
-                <button className="pill pill-soft" onClick={() => setIsModalOpen(true)} type="button">Notify me <span aria-hidden="true">→</span></button>
               </div>
             </div>
           </div>

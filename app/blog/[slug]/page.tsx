@@ -3,7 +3,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc'
 import Link from 'next/link'
 import Image from 'next/image'
 import { getBlogPost, getAllBlogSlugs } from '@/lib/blog'
-import logo from '../../../assets/logo.png'
+const logo = '/logo.png'
 
 export async function generateStaticParams() {
   const slugs = getAllBlogSlugs()
