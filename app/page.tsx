@@ -85,6 +85,7 @@ export default function Home() {
   const roadmapVideoRef = useRef<HTMLVideoElement>(null)
   const modalRef = useRef<HTMLDivElement>(null)
   const emailInputRef = useRef<HTMLInputElement>(null)
+  const isWaitlistReady = email.trim().length > 0
 
   // Fetch waitlist count on mount
   useEffect(() => {
@@ -228,16 +229,14 @@ export default function Home() {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="phone">Phone Number <span aria-hidden="true">*</span></label>
+                <label htmlFor="phone">Phone Number</label>
                 <input
                   type="tel"
                   id="phone"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="(555) 123-4567"
-                  required
                   disabled={isSubmitting}
-                  aria-required="true"
                 />
               </div>
               {submitStatus && (
@@ -251,7 +250,7 @@ export default function Home() {
               )}
               <button 
                 type="submit" 
-                className="btn-primary btn-submit"
+                className={`btn-primary btn-submit${isWaitlistReady ? ' is-complete' : ''}`}
                 disabled={isSubmitting}
               >
                 {isSubmitting ? 'Joining...' : 'Join the Waitlist'}
