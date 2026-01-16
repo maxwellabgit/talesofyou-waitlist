@@ -94,6 +94,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json()
     const email = sanitizeInput(body.email || '')
     const phone = sanitizeInput(body.phone || '')
+    const normalizedPhone = phone.trim()
 
     // Validate email
     if (!validateEmail(email)) {
@@ -103,8 +104,8 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Validate phone
-    if (!validatePhone(phone)) {
+    // Validate phone only when provided
+    if (normalizedPhone.length > 0 && !validatePhone(normalizedPhone)) {
       return NextResponse.json(
         { error: 'Please enter a valid phone number (7-15 digits)' },
         { status: 400 }
@@ -116,7 +117,7 @@ export async function POST(request: NextRequest) {
       .from('waitlist_signups')
       .insert({ 
         email: email.toLowerCase(),
-        phone: phone.trim(),
+        phone: normalizedPhone.length > 0 ? normalizedPhone : null,
         source: 'nextjs_waitlist_app'
       })
       .select()
