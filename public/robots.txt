@@ -3,5 +3,5 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://waitlist.thetalesofyou.com/sitemap.xml
+Sitemap: https://thetalesofyou.com/sitemap.xml
 

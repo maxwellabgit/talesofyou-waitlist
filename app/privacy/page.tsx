@@ -2,7 +2,7 @@ import LegalPage from '@/components/LegalPage'
 
 export const metadata = {
   title: 'Privacy Policy | Tales of You',
-  description: 'Privacy Policy for Tales of You - Learn how we collect, use, and protect your personal information.',
+  description: 'Privacy Policy for Tales of You children\'s book story generator - Learn how we collect, use, and protect your personal information.',
 }
 
 export default function PrivacyPage() {

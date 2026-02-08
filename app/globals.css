@@ -454,6 +454,40 @@ body {
 }
 
 /* ============================================
+   EXPLAINER / "WHAT IS" SECTION
+   ============================================ */
+
+.explainer-section {
+  width: 100%;
+  padding: 110px 48px;
+  background: var(--snow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.explainer-copy {
+  max-width: 760px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.explainer-copy p {
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--ink-light);
+}
+
+.explainer-copy p:first-child {
+  font-size: 18px;
+  color: var(--ink);
+}
+
+/* ============================================
    HOW IT WORKS SECTION
    ============================================ */
 
@@ -965,6 +999,58 @@ body {
 }
 
 /* ============================================
+   FAQ SECTION
+   ============================================ */
+
+.faq-section {
+  width: 100%;
+  padding: 110px 48px;
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.faq-list {
+  max-width: 760px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.faq-item {
+  background: var(--snow);
+  border: 1px solid var(--cloud);
+  border-radius: 18px;
+  padding: 28px 32px;
+  transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+  border-color: rgba(245, 169, 169, 0.4);
+}
+
+.faq-item h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+
+.faq-item p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--mist);
+  margin: 0;
+}
+
+/* ============================================
    FINAL CTA SECTION
    ============================================ */
 
@@ -1322,11 +1408,17 @@ body {
     font-size: 28px;
   }
 
+  .explainer-section,
   .how-it-works,
   .blog-section,
+  .faq-section,
   .final-cta,
   .roadmap-section {
     padding: 60px 24px;
+  }
+
+  .faq-item {
+    padding: 22px 24px;
   }
 
   .roadmap-layout {

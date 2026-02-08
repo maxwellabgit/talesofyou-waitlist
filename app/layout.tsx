@@ -15,36 +15,40 @@ const rumRaisin = Rum_Raisin({
 })
 
 export const metadata: Metadata = {
-  title: "Personalized Children's Storybooks | The Tales of You - Join the Waitlist",
-  description: "Join the waitlist for The Tales of You - personalized children's storybooks where your child becomes the hero. AI-generated stories made just for them.",
+  title: "Children's Book Story Generator | The Tales of You - Personalized Storybooks",
+  description: "The Tales of You is a children's book story generator that creates personalized storybooks where your child becomes the hero. Each children's book is uniquely crafted with AI-generated illustrations made just for them.",
   keywords: [
+    "children's book story generator",
+    "personalized children's book",
+    "story generator for kids",
     "personalized children's storybooks",
     "AI children's books",
     "custom kids storybooks",
     "children's storybook with your child as the hero",
     "AI-generated children's stories",
     "personalized storybooks",
-    "kids stories",
+    "kids story generator",
+    "children's book maker",
     "bedtime stories",
   ],
   authors: [{ name: 'Tales of You' }],
   creator: 'Tales of You',
   publisher: 'Tales of You',
-  metadataBase: new URL('https://waitlist.thetalesofyou.com'),
+  metadataBase: new URL('https://thetalesofyou.com'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: "Personalized Children's Storybooks | The Tales of You - Join the Waitlist",
-    description: "Join the waitlist for The Tales of You - personalized children's storybooks where your child becomes the hero. AI-generated stories made just for them.",
-    url: 'https://waitlist.thetalesofyou.com',
+    title: "Children's Book Story Generator | The Tales of You - Personalized Storybooks",
+    description: "The Tales of You is a children's book story generator that creates personalized storybooks where your child becomes the hero. Each children's book is uniquely crafted with AI-generated illustrations made just for them.",
+    url: 'https://thetalesofyou.com',
     siteName: 'Tales of You',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: "Tales of You - Personalized Children's Storybooks",
+        alt: "Tales of You - Children's Book Story Generator",
       },
     ],
     locale: 'en_US',
@@ -52,8 +56,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Personalized Children's Storybooks | The Tales of You - Join the Waitlist",
-    description: "Join the waitlist for The Tales of You - personalized children's storybooks where your child becomes the hero. AI-generated stories made just for them.",
+    title: "Children's Book Story Generator | The Tales of You - Personalized Storybooks",
+    description: "The Tales of You is a children's book story generator that creates personalized storybooks where your child becomes the hero. Each children's book is uniquely crafted with AI-generated illustrations made just for them.",
     images: ['/og-image.png'],
   },
   robots: {
@@ -78,26 +82,26 @@ const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'Tales of You',
-  url: 'https://waitlist.thetalesofyou.com',
-  logo: 'https://waitlist.thetalesofyou.com/og-image.png',
-  description: 'Create beautifully illustrated, personalized storybooks starring your child.',
+  url: 'https://thetalesofyou.com',
+  logo: 'https://thetalesofyou.com/og-image.png',
+  description: 'A children\'s book story generator that creates beautifully illustrated, personalized storybooks starring your child.',
   sameAs: [],
 }
 
 const webPageSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebPage',
-  name: 'Tales of You — Create Magical Stories With Your Children',
-  description: 'Create beautifully illustrated, personalized storybooks starring your child. Human-written stories with AI-generated illustrations.',
-  url: 'https://waitlist.thetalesofyou.com',
+  name: 'Tales of You — Children\'s Book Story Generator',
+  description: 'A children\'s book story generator that creates personalized storybooks starring your child. Human-written stories with AI-generated illustrations.',
+  url: 'https://thetalesofyou.com',
   publisher: {
     '@type': 'Organization',
     name: 'Tales of You',
   },
   mainEntity: {
     '@type': 'Product',
-    name: 'Tales of You - Personalized Storybooks',
-    description: 'Human-written, AI-illustrated personalized children\'s storybooks',
+    name: 'Tales of You - Children\'s Book Story Generator',
+    description: 'A personalized children\'s book story generator with human-written stories and AI-generated illustrations.',
     brand: {
       '@type': 'Brand',
       name: 'Tales of You',

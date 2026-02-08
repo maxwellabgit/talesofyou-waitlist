@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og'
 
 export const runtime = 'edge'
 
-export const alt = 'Tales of You - Create Magical Stories With Your Children'
+export const alt = 'Tales of You - Children\'s Book Story Generator | Personalized Stories'
 export const size = {
   width: 1200,
   height: 630,
@@ -72,7 +72,7 @@ export default async function Image() {
             marginBottom: 16,
           }}
         >
-          Create magical stories with your children
+          A children's book story generator for your family
         </div>
 
         {/* Description */}
