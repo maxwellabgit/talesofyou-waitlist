@@ -65,6 +65,14 @@ const roadmapItems = [
 
 const blogPosts = [
   {
+    slug: "screen-time-to-story-time",
+    title: "From Screen Time to Story Time",
+    excerpt: "We've all seen the iPad Kids. Here's why algorithm-driven content is winning — and how a children's book story generator can fight back.",
+    date: "February 8, 2026",
+    category: "Perspective",
+    readTime: "5 min read",
+  },
+  {
     slug: "our-story",
     title: "Our Story",
     excerpt: "Discover the mission behind Tales of You and how our children's book story generator is bringing imagination back to reading.",

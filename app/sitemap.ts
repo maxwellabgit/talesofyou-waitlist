@@ -11,6 +11,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
+      url: `${baseUrl}/blog/screen-time-to-story-time`,
+      lastModified: new Date('2026-02-08'),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/blog/our-story`,
       lastModified: new Date('2026-01-11'),
       changeFrequency: 'monthly',
