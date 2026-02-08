@@ -15,16 +15,28 @@ const rumRaisin = Rum_Raisin({
 })
 
 export const metadata: Metadata = {
-  title: 'Tales of You — Create Magical Stories With Your Children',
-  description: 'Create beautifully illustrated, personalized storybooks starring your child. Human-written stories with AI-generated illustrations that bring imagination to life.',
-  keywords: ['personalized stories', 'children books', 'AI illustration', 'custom storybooks', 'personalized children books', 'kids stories', 'bedtime stories'],
+  title: "Personalized Children's Storybooks | The Tales of You - Join the Waitlist",
+  description: "Join the waitlist for The Tales of You - personalized children's storybooks where your child becomes the hero. AI-generated stories made just for them.",
+  keywords: [
+    "personalized children's storybooks",
+    "AI children's books",
+    "custom kids storybooks",
+    "children's storybook with your child as the hero",
+    "AI-generated children's stories",
+    "personalized storybooks",
+    "kids stories",
+    "bedtime stories",
+  ],
   authors: [{ name: 'Tales of You' }],
   creator: 'Tales of You',
   publisher: 'Tales of You',
   metadataBase: new URL('https://waitlist.thetalesofyou.com'),
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
-    title: 'Tales of You — Create Magical Stories With Your Children',
-    description: 'Create beautifully illustrated, personalized storybooks starring your child. Human-written stories with AI-generated illustrations.',
+    title: "Personalized Children's Storybooks | The Tales of You - Join the Waitlist",
+    description: "Join the waitlist for The Tales of You - personalized children's storybooks where your child becomes the hero. AI-generated stories made just for them.",
     url: 'https://waitlist.thetalesofyou.com',
     siteName: 'Tales of You',
     images: [
@@ -32,7 +44,7 @@ export const metadata: Metadata = {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Tales of You - Personalized Children\'s Stories',
+        alt: "Tales of You - Personalized Children's Storybooks",
       },
     ],
     locale: 'en_US',
@@ -40,8 +52,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Tales of You — Create Magical Stories With Your Children',
-    description: 'Create beautifully illustrated, personalized storybooks starring your child.',
+    title: "Personalized Children's Storybooks | The Tales of You - Join the Waitlist",
+    description: "Join the waitlist for The Tales of You - personalized children's storybooks where your child becomes the hero. AI-generated stories made just for them.",
     images: ['/og-image.png'],
   },
   robots: {
