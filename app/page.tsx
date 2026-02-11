@@ -9,26 +9,26 @@ const howItWorks = [
   {
     number: "1",
     icon: "📖",
-    title: "Choose a Story",
-    description: "Browse our growing library of children's book stories designed for all ages.",
+    title: "Pick a Story",
+    description: "Browse adventures, bedtime tales, and educational stories — all written by real authors for kids of every age.",
   },
   {
     number: "2",
     icon: "✨",
-    title: "Personalize Your Story",
-    description: "Add your name, choose characters, and customize the adventure.",
+    title: "Make It Theirs",
+    description: "Add your child's name, upload a photo, and choose who joins the adventure — siblings, friends, even the family pet.",
   },
   {
     number: "3",
     icon: "❤️",
-    title: "Watch the Magic",
-    description: "Our story generator creates beautiful characters, illustrations, and brings your children's book to life.",
+    title: "See the Magic",
+    description: "In seconds, our story generator creates a fully illustrated children's book with characters that look like your family.",
   },
   {
     number: "4",
     icon: "🔗",
-    title: "Share & Enjoy",
-    description: "Read together, save to your library, or share with family and friends.",
+    title: "Read, Save, Share",
+    description: "Read it together at bedtime, save it to your library forever, or send it to grandparents with a single tap.",
   },
 ]
 
@@ -37,28 +37,28 @@ const roadmapItems = [
     number: "1",
     icon: "🚀",
     title: "Launch Beta",
-    description: "Release our first collection of human-written, personalized children's book stories to early supporters.",
+    description: "Our first collection of personalized stories goes live for waitlist members — real stories, real illustrations, real magic.",
     status: "in-progress",
   },
   {
     number: "2",
     icon: "🎧",
     title: "Audio Narration",
-    description: "Add AI-powered voice narration so stories can be read aloud automatically.",
+    description: "Every story read aloud with AI narration — pick a voice, hit play, and let bedtime run itself.",
     status: "upcoming",
   },
   {
     number: "3",
     icon: "🎬",
     title: "Animated Illustrations",
-    description: "Add animated illustrations to your stories with the click of a button.",
+    description: "Watch the illustrations come alive with gentle animations that keep little eyes on the page.",
     status: "upcoming",
   },
   {
     number: "4",
     icon: "📚",
     title: "Choose Your Own Adventure",
-    description: "Grow our children's book library with new stories and alternate endings.",
+    description: "Branching storylines where your child makes the choices — every reading is a different journey.",
     status: "upcoming",
   },
 ]
@@ -67,7 +67,7 @@ const blogPosts = [
   {
     slug: "screen-time-to-story-time",
     title: "From Screen Time to Story Time",
-    excerpt: "We've all seen the iPad Kids. Here's why algorithm-driven content is winning — and how a children's book story generator can fight back.",
+    excerpt: "We've all seen the iPad Kids. Algorithm-driven content is winning the attention war — here's why personalized storytelling might be the answer.",
     date: "February 8, 2026",
     category: "Perspective",
     readTime: "5 min read",
@@ -75,50 +75,59 @@ const blogPosts = [
   {
     slug: "our-story",
     title: "Our Story",
-    excerpt: "Discover the mission behind Tales of You and how our children's book story generator is bringing imagination back to reading.",
+    excerpt: "Why we built Tales of You, what we believe about reading, and why we think personalized children's books can bring imagination back.",
     date: "January 11, 2026",
     category: "Company",
     readTime: "6 min read",
   },
 ]
 
+const faqItems = [
+  {
+    question: "What is a personalized children's book?",
+    answer: "It's a storybook where your child isn't just reading about a character — they are the character. Their name, their face, and their world are woven directly into the story. With Tales of You, creating a personalized children's book takes minutes and doesn't require any writing or design skills.",
+  },
+  {
+    question: "How does the Tales of You story generator work?",
+    answer: "You pick a story, tell us about your child — their name, a photo, maybe a favorite animal — and our story generator does the rest. In minutes you get a fully illustrated personalized children's book with characters that actually look like your family. It's that simple.",
+  },
+  {
+    question: "When will Tales of You launch?",
+    answer: "Very soon. We're putting the finishing touches on our first collection of stories right now. Join the waitlist to be first in line — you'll get an email the moment we go live, plus a discount for signing up early.",
+  },
+  {
+    question: "Is Tales of You safe for kids?",
+    answer: "Yes, completely. Every story is written for kids aged 2 to 12 and reviewed for age-appropriate content. We focus on positive themes — kindness, curiosity, bravery — and parents have full control over story choices and character creation. No ads, no tracking, no surprises.",
+  },
+  {
+    question: "What ages are the stories designed for?",
+    answer: "We're building stories for kids aged 2 through 12. That means simple, colorful picture books for toddlers and richer, longer adventures for older readers. Each story's vocabulary and pacing is matched to the right age group, so it always feels just right.",
+  },
+  {
+    question: "Can I add family members or pets to the story?",
+    answer: "Absolutely. You can add siblings, parents, grandparents, friends — even the family dog. Upload a photo and our AI creates custom illustrations that actually resemble your real family. It turns every personalized book into a true keepsake.",
+  },
+  {
+    question: "How is this different from other personalized children's books?",
+    answer: "Most personalized books just drop your child's name into a template. Tales of You is different — our stories are written by real authors and our AI generates unique illustrations based on your child's actual appearance. Every story, every character, every page is one-of-a-kind.",
+  },
+  {
+    question: "Can personalized stories help my child learn to read?",
+    answer: "Kids pay more attention when they see themselves in a story — that's not just our opinion, it's backed by research. Our stories pair that natural engagement with age-appropriate vocabulary and thoughtful pacing. When reading feels personal and exciting, kids want to do more of it.",
+  },
+]
+
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "What is a personalized children's book?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "A personalized children's book is a custom storybook where the child's name, traits, or family details are woven into the story so they become the hero. Our story generator makes it easy to create a one-of-a-kind children's book in minutes.",
-      },
+  mainEntity: faqItems.map(item => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
     },
-    {
-      "@type": "Question",
-      name: "How does The Tales of You story generator work?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "You choose a story, add details about your child, and our children's book story generator creates a personalized storybook with custom characters and illustrations made just for them.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "When will The Tales of You launch?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "We are launching soon. Join the waitlist to be first in line and receive updates and early access offers.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Is The Tales of You safe for kids?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. Every children's book created with our story generator is designed for kids and reviewed for age-appropriate content, with a focus on positive themes and family-friendly storytelling.",
-      },
-    },
-  ],
+  })),
 }
 
 export default function Home() {
@@ -262,8 +271,8 @@ export default function Home() {
             >
               ×
             </button>
-            <h2 id="modal-title" className="modal-title">Join the Waitlist</h2>
-            <p className="modal-subtitle">Be among the first to sign up! We will send an email with a discount code when the site is live.</p>
+            <h2 id="modal-title" className="modal-title">Get Early Access</h2>
+            <p className="modal-subtitle">Join the waitlist and we'll send you a discount code the moment Tales of You goes live. No spam — just one email when it's time.</p>
             <form onSubmit={handleSubmit} className="waitlist-form">
               <div className="form-group">
                 <label htmlFor="email">Email Address <span aria-hidden="true">*</span></label>
@@ -312,6 +321,30 @@ export default function Home() {
         </div>
       )}
 
+      <nav className="site-nav" role="navigation" aria-label="Main navigation">
+        <div className="nav-inner">
+          <a href="#" className="nav-logo" aria-label="Tales of You - Back to top">
+            <Image src={logo} alt="Tales of You" width={36} height={36} />
+            <span className="nav-brand">
+              <span className="text-coral">Tales</span>
+              <span className="text-gold">of</span>
+              <span className="text-sky">You</span>
+            </span>
+          </a>
+          <div className="nav-links">
+            <a href="#what-is">About</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#roadmap">Roadmap</a>
+            <a href="/blog/our-story">Blog</a>
+            <a href="#faq">FAQ</a>
+          </div>
+          <button className="btn-nav-cta" onClick={() => setIsModalOpen(true)} type="button">
+            Join Waitlist
+            <span className="arrow" aria-hidden="true">→</span>
+          </button>
+        </div>
+      </nav>
+
       <section className="hero">
         <div className="hero-split">
           <div className="hero-content">
@@ -329,11 +362,11 @@ export default function Home() {
               </div>
             </div>
 
-            <h1 className="hero-headline">A children's book story generator where your child becomes the hero</h1>
+            <h1 className="hero-headline">Personalized children's books where your child is the hero of every story</h1>
             <p className="hero-description">
-              Join the waitlist for a personalized children's book experience built around your child's name,
-              personality, and imagination. Our story generator turns every adventure into a keepsake you can read together,
-              share with family, and revisit at bedtime.
+              What if your child could see themselves inside a storybook? Tales of You is a children's book story generator
+              that weaves your child's name, face, and personality into human-written stories with beautiful AI illustrations.
+              Every book is a one-of-a-kind keepsake your family will read together again and again.
             </p>
             
             <div className="hero-actions">
@@ -349,24 +382,24 @@ export default function Home() {
                 <div className="avatar">👧</div>
                 <div className="avatar">👦</div>
               </div>
-              <span>Join {waitlistCount !== null ? (waitlistCount + 50).toLocaleString() : '...'} heroes on the waitlist</span>
+              <span>{waitlistCount !== null ? (waitlistCount + 50).toLocaleString() : '...'} families already on the waitlist</span>
             </div>
           </div>
 
           <div className="hero-visual">
-            <div className="hero-chip">Human-written • AI-illustrated • Personalized • Shareable</div>
+            <div className="hero-chip">Human-written stories • AI-illustrated • Truly personalized • Shareable</div>
             <div className="hero-panel">
               <div className="panel-header">
                 <span className="panel-dot"></span>
-                Drop preview
+                What you'll get
               </div>
               <ul className="panel-list">
-                <li>Human-written children's book stories created by professionals</li>
-                <li>Personalized characters — take a selfie with you, your child, or your pet</li>
-                <li>Save your favorite stories and characters, and share each children's book with family</li>
+                <li>Stories written by real authors — not generated by a chatbot</li>
+                <li>Custom characters that actually look like your child, family, and pets</li>
+                <li>A growing library of personalized books you can save, revisit, and share</li>
               </ul>
               <div className="panel-footer">
-                <button className="pill" onClick={() => setIsModalOpen(true)} type="button">Get a discount on your first month</button>
+                <button className="pill" onClick={() => setIsModalOpen(true)} type="button">Sign up early for a discount</button>
               </div>
             </div>
           </div>
@@ -375,37 +408,37 @@ export default function Home() {
 
       <section className="explainer-section" id="what-is">
         <div className="section-header">
-          <div className="eyebrow">What is this?</div>
-          <h2 className="section-title">What Is The Tales of You?</h2>
-          <p className="section-subtitle">A children's book story generator that makes reading feel personal, exciting, and unforgettable.</p>
+          <div className="eyebrow">The idea</div>
+          <h2 className="section-title">What Is Tales of You?</h2>
+          <p className="section-subtitle">A children's book story generator that turns your child into the hero of the story.</p>
         </div>
         <div className="explainer-copy">
           <p>
-            The Tales of You is a personalized children's book story generator that uses AI to create custom stories where your child
-            becomes the main character. Instead of a one-size-fits-all story, every children's book is tailored to your child's name, favorite
-            themes, and the details that make them unique. The result is a personalized children's book with your child as the hero, designed
-            to spark imagination and build a love of reading from the very first page.
+            Most personalized children's books just swap in a name. Tales of You goes further. Our story generator
+            takes your child's name, face, and personality and weaves them into professionally written stories with
+            AI-generated illustrations that actually look like your family. The result isn't a gimmick — it's a real
+            children's book that feels like it was written just for them.
           </p>
           <p>
-            We combine human-written storytelling with our AI story generator to deliver the best of both worlds: the warmth,
-            pacing, and structure of a great children's book with the flexibility of personalization. You can choose a story, customize
-            characters, and create a keepsake in minutes. Our goal is to help families share meaningful reading moments while giving
-            kids a children's book that feels like it was made just for them.
+            Every story in our library is crafted by human authors who understand pacing, wonder, and what makes
+            kids want to turn the page. The AI handles the illustrations — creating characters, scenes, and worlds
+            that match each child's unique details. You get the heart of a great children's book with the magic of
+            personalization, ready in minutes.
           </p>
           <p>
-            Whether you are looking for a special bedtime ritual, a memorable gift, or a way to help a reluctant reader fall in love
-            with books, our children's book story generator makes it easy. We are building a growing library of personalized stories
-            that celebrate each child. Join the waitlist today to get early access and be the first to create a children's book
-            your child will want to read again and again.
+            Whether it's a nightly bedtime ritual, a birthday gift they'll actually treasure, or a way to get a
+            reluctant reader excited about books — Tales of You makes it easy. We're building a growing library
+            of stories for every age and interest. Join the waitlist to be the first to create a personalized
+            children's book your family will want to read on repeat.
           </p>
         </div>
       </section>
 
       <section className="how-it-works" id="how-it-works">
         <div className="section-header">
-          <div className="eyebrow">A peek before the drop</div>
+          <div className="eyebrow">Simple as bedtime</div>
           <h2 className="section-title">How It Works</h2>
-          <p className="section-subtitle">Our story generator creates a personalized children's book in just a few steps.</p>
+          <p className="section-subtitle">From story to keepsake in under five minutes. No writing, no design skills, no catch.</p>
         </div>
         <div className="how-layout">
           <div className="vertical-video">
@@ -442,9 +475,9 @@ export default function Home() {
 
       <section className="roadmap-section" id="roadmap">
         <div className="section-header">
-          <div className="eyebrow">What's coming</div>
+          <div className="eyebrow">What's next</div>
           <h2 className="section-title">Roadmap</h2>
-          <p className="section-subtitle">Our journey to bring magical storytelling to families everywhere.</p>
+          <p className="section-subtitle">Where we are and where we're headed. Early supporters help shape what comes next.</p>
         </div>
         <div className="roadmap-layout">
           <div className="roadmap-stack">
@@ -491,11 +524,12 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="blog-section">
-        <div className="blog-header">
+      <section className="blog-section" id="blog">
+        <div className="section-header">
+          <div className="eyebrow">From our team</div>
           <h2 className="section-title">Blog</h2>
+          <p className="section-subtitle">Stories, insights, and updates from the Tales of You team.</p>
         </div>
-        <p className="blog-subtitle">Keep up with the latest from the Tales of You team.</p>
         <div className="blog-grid">
           {blogPosts.map((post, index) => (
             <Link key={index} href={`/blog/${post.slug}`} className="blog-card-link">
@@ -520,39 +554,26 @@ export default function Home() {
 
       <section className="faq-section" id="faq">
         <div className="section-header">
-          <div className="eyebrow">FAQ</div>
+          <div className="eyebrow">Questions</div>
           <h2 className="section-title">Frequently Asked Questions</h2>
+          <p className="section-subtitle">Everything parents ask us before joining the waitlist.</p>
         </div>
         <div className="faq-list">
-          <article className="faq-item">
-            <h3>What is a personalized children's book?</h3>
-            <p>
-              A personalized children's book is a custom storybook where your child's name and details appear in the story
-              so they become the hero. Our story generator makes it easy to create one in minutes.
-            </p>
-          </article>
-          <article className="faq-item">
-            <h3>How does The Tales of You story generator work?</h3>
-            <p>
-              You choose a story, add details about your child, and our children's book story generator creates a personalized
-              storybook with custom characters and illustrations.
-            </p>
-          </article>
-          <article className="faq-item">
-            <h3>When will The Tales of You launch?</h3>
-            <p>We are launching soon. Join the waitlist to get updates and early access offers.</p>
-          </article>
-          <article className="faq-item">
-            <h3>Is The Tales of You safe for kids?</h3>
-            <p>Yes. Every children's book created with our story generator is reviewed for age-appropriate content and positive themes.</p>
-          </article>
+          {faqItems.map((item, index) => (
+            <article key={index} className="faq-item" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+              <h3 itemProp="name">{item.question}</h3>
+              <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                <p itemProp="text">{item.answer}</p>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
 
       <section className="final-cta">
         <div className="cta-content">
-          <h2>Ready to create your child's first personalized children's book?</h2>
-          <p>Be the first to try our story generator when Tales of You launches, and get a discount for signing up early.</p>
+          <h2>Your child's first personalized book is almost here</h2>
+          <p>Join the waitlist now and you'll be first to create a story when we launch — plus you'll get a discount just for being early.</p>
           <button className="btn-primary btn-large" onClick={() => setIsModalOpen(true)}>
             Join the Waitlist
             <span className="arrow" aria-hidden="true">→</span>
@@ -561,19 +582,39 @@ export default function Home() {
       </section>
 
       <footer className="footer">
-        <div className="footer-logo">
-          <Image src={logo} alt="Tales of You children's book story generator logo" width={42} height={42} />
-          <span className="footer-brand">
-            <span className="text-coral">Tales</span>
-            <span className="text-gold">of</span>
-            <span className="text-sky">You</span>
-          </span>
+        <div className="footer-top">
+          <div className="footer-logo">
+            <Image src={logo} alt="Tales of You children's book story generator logo" width={42} height={42} />
+            <span className="footer-brand">
+              <span className="text-coral">Tales</span>
+              <span className="text-gold">of</span>
+              <span className="text-sky">You</span>
+            </span>
+          </div>
+          <p className="footer-tagline">Personalized children's books for families who believe reading should feel like magic.</p>
         </div>
-        <nav className="footer-links" aria-label="Legal">
-          <Link href="/privacy">Privacy Policy</Link>
-          <Link href="/terms">Terms of Service</Link>
-        </nav>
-        <p className="footer-copy">© 2026 Tales of You. All rights reserved.</p>
+        <div className="footer-columns">
+          <nav className="footer-col" aria-label="Site navigation">
+            <h4 className="footer-col-title">Explore</h4>
+            <a href="#what-is">About</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#roadmap">Roadmap</a>
+            <a href="#faq">FAQ</a>
+          </nav>
+          <nav className="footer-col" aria-label="Blog posts">
+            <h4 className="footer-col-title">Blog</h4>
+            <Link href="/blog/our-story">Our Story</Link>
+            <Link href="/blog/screen-time-to-story-time">Screen Time to Story Time</Link>
+          </nav>
+          <nav className="footer-col" aria-label="Legal">
+            <h4 className="footer-col-title">Legal</h4>
+            <Link href="/privacy">Privacy Policy</Link>
+            <Link href="/terms">Terms of Service</Link>
+          </nav>
+        </div>
+        <div className="footer-bottom">
+          <p className="footer-copy">© 2026 Tales of You. All rights reserved.</p>
+        </div>
       </footer>
     </main>
   )
