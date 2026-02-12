@@ -1,0 +1,19 @@
+# Tales of You
+
+> Tales of You is a personalized children's book platform. Parents pick a story, add their child's name and photo, and our AI generates a fully illustrated book with characters that look like their family. Stories are written by real authors for kids aged 2–12. Read together, save to your library, or share with grandparents. Currently in beta; join the waitlist for early access.
+
+Tales of You is different from template-based personalized books: our stories are written by real authors and our AI creates unique illustrations based on your child's actual appearance. Every story, character, and page is one-of-a-kind. You can add siblings, parents, grandparents, friends, or even the family pet. The roadmap includes audio narration, animated illustrations, and choose-your-own-adventure branching storylines.
+
+## Main
+
+- [Tales of You Home](https://thetalesofyou.com): Welcome page, waitlist signup, how it works, FAQ, roadmap
+
+## Blog
+
+- [From Screen Time to Story Time](https://thetalesofyou.com/blog/screen-time-to-story-time): Why personalized storytelling might be the answer to algorithm-driven content
+- [Our Story](https://thetalesofyou.com/blog/our-story): Why we built Tales of You, what we believe about reading, and why personalized children's books can bring imagination back
+
+## Optional
+
+- [Privacy Policy](https://thetalesofyou.com/privacy): Privacy policy
+- [Terms and Conditions](https://thetalesofyou.com/terms): Terms of service
