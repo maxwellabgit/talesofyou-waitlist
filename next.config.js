@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  transpilePackages: ['next-mdx-remote'],
+  turbopack: { root: __dirname },
   reactStrictMode: true,
   poweredByHeader: false,
   compress: true,
